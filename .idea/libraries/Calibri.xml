@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Calibri">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/src/main/resources/jasper/Calibri.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
