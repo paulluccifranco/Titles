@@ -10,7 +10,6 @@ import net.sf.jasperreports.engine.design.JasperDesign;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import org.apache.commons.beanutils.DynaBean;
 import org.apache.commons.beanutils.LazyDynaBean;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import java.io.*;
 import java.math.BigDecimal;
@@ -24,14 +23,18 @@ import java.util.*;
 public class PdfGenerator {
 
 
-    public byte[] generatorPDF(Title title) throws IOException {
+    public byte[] generatorPDF(Title title, String day, String month, String year) throws IOException {
 
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
         NumberFormat myFormatter = new DecimalFormat("###,###,###");
         String formattedNumber = myFormatter.format(Double.valueOf(title.getDni()));
+        formattedNumber = formattedNumber.replace(",", ".");
         String principalText = "Deja constancia que…………"+title.getName()+"……………DNI N°…"+formattedNumber+"……,";
         List<DynaBean> dynaBeans = new ArrayList<>();
         DynaBean beane = new LazyDynaBean();
+        beane.set("day", day);
+        beane.set("month", month);
+        beane.set("year", year);
         beane.set("principalText", principalText);
         beane.set("number", ""+title.getNumber().toBigInteger().intValueExact());
         beane.set("book", ""+title.getBook().toBigInteger().intValueExact());

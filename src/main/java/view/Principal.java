@@ -20,6 +20,9 @@ public class Principal extends JFrame {
     private JLabel selectorLabel;
     private JPanel chargePanel;
     private JButton descargarExcelDeEjemploButton;
+    private JTextField fieldMonth;
+    private JTextField fieldYear;
+    private JTextField fieldDay;
     File selectedFile = null;
 
     public Principal() {
@@ -60,6 +63,16 @@ public class Principal extends JFrame {
                 JFileChooser jfc = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
                 jfc.setSelectedFile(new File("Titulos.zip"));
                 int returnValue = jfc.showSaveDialog(null);
+                String day = "";
+                String month = "";
+                String year = "";
+                try{
+                    day = fieldDay.getText();
+                    month = fieldMonth.getText();
+                    year = fieldYear.getText();
+                }catch(Exception ex){
+
+                }
 
                 if (returnValue == JFileChooser.APPROVE_OPTION) {
                     String zipFile = jfc.getSelectedFile().getParent() + "/Titulos.zip";
@@ -68,7 +81,7 @@ public class Principal extends JFrame {
                         ZipOutputStream zos = new ZipOutputStream(fos);
                         for (Title tit : titles) {
                             zos.putNextEntry(new ZipEntry(tit.getName().replace(" ", "").concat(".pdf")));
-                            zos.write(pdfGenerator.generatorPDF(tit));
+                            zos.write(pdfGenerator.generatorPDF(tit, day, month, year));
                             zos.closeEntry();
                         }
                         zos.close();

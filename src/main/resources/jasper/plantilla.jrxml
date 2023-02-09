@@ -56,6 +56,9 @@
 	<field name="fundamentsLetters" class="java.lang.String"/>
 	<field name="caresLetters" class="java.lang.String"/>
 	<field name="practiceLetters" class="java.lang.String"/>
+	<field name="day" class="java.lang.String"/>
+	<field name="month" class="java.lang.String"/>
+	<field name="year" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -174,14 +177,14 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{dateCymat}]]></textFieldExpression>
 			</textField>
-			<staticText>
-				<reportElement x="18" y="610" width="542" height="40" uuid="92042fcd-eb6a-43f5-b830-def017d265fb"/>
+			<textField>
+				<reportElement x="18" y="610" width="542" height="40" uuid="6d1b2342-5399-48d7-bc4b-cb546a10e4ef"/>
 				<textElement markup="styled">
 					<font fontName="Times New Roman" size="12"/>
 					<paragraph lineSpacing="Single" lineSpacingSize="1.0"/>
 				</textElement>
-				<text><![CDATA[En fe de lo cual se expide la presente constancia <style fontName="TimesNewRoman" isBold="true">ORIGINAL</style> sin raspaduras ni enmiendas, en la ciudad de <style fontName="TimesNewRoman" isBold="true">LA PLATA – PROVINCIA DE BUENOS AIRES</style> a los…22…. días del mes de…octubre …del año 2022….]]></text>
-			</staticText>
+				<textFieldExpression><![CDATA["En fe de lo cual se expide la presente constancia <style fontName=\"TimesNewRoman\" isBold=\"true\">ORIGINAL</style> sin raspaduras ni enmiendas, en la ciudad de <style fontName=\"TimesNewRoman\" isBold=\"true\">LA PLATA – PROVINCIA DE BUENOS AIRES</style> a los…"+$F{day}+"…. días del mes de…"+$F{month}+" …del año "+$F{year}+"…."]]></textFieldExpression>
+			</textField>
 			<textField>
 				<reportElement x="300" y="422" width="80" height="15" uuid="0fbb438d-9580-4266-a42c-e26110728581">
 					<property name="com.jaspersoft.studio.unit.x" value="cm"/>
@@ -247,28 +250,28 @@
 				<textFieldExpression><![CDATA[$F{sp1}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="399" y="446" width="50" height="15" uuid="8a6cb931-05cb-4438-a6e5-b273073bc232"/>
+				<reportElement x="398" y="446" width="50" height="15" uuid="8a6cb931-05cb-4438-a6e5-b273073bc232"/>
 				<textElement textAlignment="Center">
 					<font fontName="Times New Roman" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{biology}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="401" y="470" width="50" height="15" uuid="99c9920b-c027-4e92-aac8-528a1c4fa453"/>
+				<reportElement x="398" y="470" width="50" height="15" uuid="99c9920b-c027-4e92-aac8-528a1c4fa453"/>
 				<textElement textAlignment="Center">
 					<font fontName="Times New Roman" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{fundaments}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="402" y="500" width="50" height="15" uuid="f611958f-cb0a-4549-b4a7-cae13ec54d4f"/>
+				<reportElement x="398" y="500" width="50" height="15" uuid="f611958f-cb0a-4549-b4a7-cae13ec54d4f"/>
 				<textElement textAlignment="Center">
 					<font fontName="Times New Roman" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{cares}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="401" y="530" width="50" height="15" uuid="f705c036-759c-4a28-b1b6-207d4a97c242"/>
+				<reportElement x="398" y="530" width="50" height="15" uuid="f705c036-759c-4a28-b1b6-207d4a97c242"/>
 				<textElement textAlignment="Center">
 					<font fontName="Times New Roman" size="12"/>
 				</textElement>
@@ -322,10 +325,10 @@
 			</textField>
 			<textField>
 				<reportElement x="21" y="580" width="530" height="15" uuid="08410e71-713a-4d37-aca0-d83e8e1abe7d"/>
-				<textElement textAlignment="Center" markup="styled">
+				<textElement textAlignment="Left" markup="styled">
 					<font fontName="Times New Roman" size="12" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA["<style fontName=\"TimesNewRoman\" isBold=\"true\">"+"Promedio General de Calificaciones: "+$F{average}+"............................................................................................................</style>"]]></textFieldExpression>
+				<textFieldExpression><![CDATA["<style fontName=\"TimesNewRoman\" isBold=\"true\">"+"Promedio General de Calificaciones: "+$F{average}+" . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . </style>"]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="18" y="790" width="164" height="16" uuid="4195c629-5189-4226-969c-d451f38e7049"/>
@@ -506,16 +509,6 @@
 					<font fontName="TimesNewRoman" size="14" isBold="false"/>
 				</textElement>
 				<text><![CDATA[Fundamentos del Cuidado
-]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="40" y="660" width="260" height="18" uuid="0ce2eb73-9360-42f0-9cff-002adbe7a99c">
-					<property name="com.jaspersoft.studio.unit.x" value="cm"/>
-				</reportElement>
-				<textElement textAlignment="Left" verticalAlignment="Middle">
-					<font fontName="TimesNewRoman" size="14" isBold="false"/>
-				</textElement>
-				<text><![CDATA[Cuidados de la salud centrados en la comunidad y la familia
 ]]></text>
 			</staticText>
 			<staticText>
